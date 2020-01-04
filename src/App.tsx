@@ -1,6 +1,6 @@
 import * as React from 'react';
-import CzmlDataSource from './CzmlDataSource';
-import Viewer from './Viewer';
+import CzmlDataSource from './components/CzmlDataSource';
+import Viewer from './components/Viewer';
 
 const czml = [
   {
