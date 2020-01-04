@@ -1,16 +1,19 @@
 import * as React from 'react';
-import { Cartesian3 } from 'cesium';
+import { Cartesian3, Color } from 'cesium';
 import { Viewer, Entity } from 'resium';
+import CustomDataSource from './CustomDataSource';
 
 const App = () => {
   return (
     <Viewer full>
-      <Entity
-        name="Tokyo"
-        position={Cartesian3.fromDegrees(139.767052, 35.681167, 100)}
-        point={{ pixelSize: 10 }}
-        description="hoge"
-      />
+      <CustomDataSource name="custom">
+        <Entity
+          name="added to custom data source"
+          description="Tokyo Station"
+          position={Cartesian3.fromDegrees(139.767125, 35.681236, 100)}
+          point={{ pixelSize: 10, color: Color.RED }}
+        />
+      </CustomDataSource>
     </Viewer>
   );
 };
