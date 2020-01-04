@@ -19,14 +19,14 @@ module.exports = (env, args) => {
       open: true,
     },
     devtool: !prod ? void 0 : 'eval-source-map',
-    entry: ['./src/index'],
+    entry: ['./src/index.tsx'],
     mode: prod ? 'production' : 'development',
     module: {
       rules: [
         {
-          test: /\.js$/,
+          test: /\.tsx?$/,
           exclude: /node_modules/,
-          use: 'babel-loader',
+          loader: 'ts-loader',
         },
         {
           test: /\.css$/,
@@ -85,6 +85,7 @@ module.exports = (env, args) => {
       ...(prod ? [] : [new webpack.HotModuleReplacementPlugin()]),
     ],
     resolve: {
+      extensions: ['.js', '.jsx', '.ts', '.tsx'],
       alias: {
         ...(prod
           ? {}
