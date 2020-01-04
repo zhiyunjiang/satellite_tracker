@@ -31,6 +31,24 @@ const czml = [
       },
     },
   },
+  {
+    id: 'shape2',
+    name: 'line',
+    description: 'ライン',
+    polyline: {
+      positions: {
+        cartographicDegrees: [141.064, 38.366, 0, 135.19, 35.567, 0, 132.318, 34.297, 0],
+      },
+      material: {
+        solidColor: {
+          color: {
+            rgba: [255, 255, 255, 100],
+          },
+        },
+      },
+      width: 0.5,
+    },
+  },
 ];
 
 const App = () => {
