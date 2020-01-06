@@ -15,7 +15,7 @@ module.exports = (env, args) => {
     context: __dirname,
     devServer: {
       hot: true,
-      port: 3000,
+      port: 3001,
       open: true,
     },
     devtool: !prod ? void 0 : 'eval-source-map',
