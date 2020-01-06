@@ -1,3 +1,4 @@
+import math
 from flask import jsonify
 from datetime import datetime
 from pyorbital.orbital import Orbital
@@ -15,4 +16,9 @@ def get_czmls():
     )
     now = datetime.utcnow()
     lon, lat, alt = iss_orbit.get_lonlatalt(now)
-    return jsonify({"lon": lon, "lat": lat, "alt": alt}), 200
+
+    return jsonify({
+        "lon": lon,
+        "lat": lat,
+        "alt": alt * 1000,
+    }), 200
