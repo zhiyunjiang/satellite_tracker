@@ -8,6 +8,7 @@ flask = "*"
 flask-script = "*"
 uwsgi = "*"
 pyorbital = "*"
+flask-cors = "*"
 
 [dev-packages]
 flake8 = "*"

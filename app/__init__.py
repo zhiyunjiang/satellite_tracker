@@ -1,9 +1,10 @@
 import os
 from flask import Flask
+from flask_cors import CORS
 
 
 application = Flask(__name__)
-
+cors = CORS(application, resources={r"/api/*": {"origins": "*"}})
 
 env = os.getenv('RUN_MODE', 'development')
 application.config['RUN_MODE'] = env
