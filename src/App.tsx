@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Viewer, CzmlDataSource } from 'resium';
+import { Cartesian3 } from 'cesium';
+import { Viewer, CzmlDataSource, CameraFlyTo } from 'resium';
 import { getCurrentPosition } from './queries/orbitalQuery';
 
 const { useState, useCallback, useEffect } = React;
@@ -89,6 +90,13 @@ const App: React.FC = () => {
   ];
   return (
     <Viewer full>
+      <CameraFlyTo
+        destination={Cartesian3.fromDegrees(
+          cartographicDegrees.lon,
+          cartographicDegrees.lat,
+          10000000,
+        )}
+      />
       <CzmlDataSource data={czml} />
     </Viewer>
   );
