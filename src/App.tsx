@@ -1,9 +1,8 @@
 import * as React from 'react';
-import CzmlDataSource from './components/CzmlDataSource';
-import Viewer from './components/Viewer';
-// import { getCurrentPosition } from './queries/orbitalQuery';
+import { Viewer, CzmlDataSource } from 'resium';
+import { getCurrentPosition } from './queries/orbitalQuery';
 
-// const { useState, useCallback, useEffect } = React;
+const { useState, useCallback, useEffect } = React;
 
 type CartographicDegrees = {
   lon: number;
@@ -11,54 +10,49 @@ type CartographicDegrees = {
   alt: number;
 };
 
-// type OrbitalState = {
-//   isLoading: boolean;
-//   isError: boolean;
-//   cartographicDegrees?: CartographicDegrees;
-// };
+type OrbitalState = {
+  isLoading: boolean;
+  isError: boolean;
+  cartographicDegrees?: CartographicDegrees;
+};
 
-// const useCurrentPosition = () => {
-//   const [state, setState] = useState<OrbitalState>({
-//     isLoading: true,
-//     isError: false,
-//     cartographicDegrees: undefined,
-//   });
+const useCurrentPosition = () => {
+  const [state, setState] = useState<OrbitalState>({
+    isLoading: true,
+    isError: false,
+    cartographicDegrees: undefined,
+  });
 
-//   const fetchCurrentPosition = useCallback(async () => {
-//     const res = await getCurrentPosition();
-//     if (res.status >= 400) {
-//       setState(prevState => {
-//         return { ...prevState, isLoading: false, isError: true };
-//       });
-//     }
-//     const cartographicDegrees = res.data as CartographicDegrees;
-//     setState(prevState => {
-//       return {
-//         ...prevState,
-//         isLoading: false,
-//         isError: false,
-//         cartographicDegrees: cartographicDegrees,
-//       };
-//     });
-//   }, []);
+  const fetchCurrentPosition = useCallback(async () => {
+    const res = await getCurrentPosition();
+    if (res.status >= 400) {
+      setState(prevState => {
+        return { ...prevState, isLoading: false, isError: true };
+      });
+    }
+    const cartographicDegrees = res.data as CartographicDegrees;
+    setState(prevState => {
+      return {
+        ...prevState,
+        isLoading: false,
+        isError: false,
+        cartographicDegrees: cartographicDegrees,
+      };
+    });
+  }, []);
 
-//   useEffect(() => {
-//     fetchCurrentPosition();
-//   }, [fetchCurrentPosition]);
+  useEffect(() => {
+    fetchCurrentPosition();
+  }, [fetchCurrentPosition]);
 
-//   return { ...state };
-// };
+  return { ...state };
+};
 
 const App: React.FC = () => {
-  // const { isError, isLoading, cartographicDegrees } = useCurrentPosition();
-  // if (isLoading) return <div>Loading....</div>;
-  // if (isError || !cartographicDegrees) return <div>Error!</div>;
+  const { isError, isLoading, cartographicDegrees } = useCurrentPosition();
+  if (isLoading) return <div>Loading....</div>;
+  if (isError || !cartographicDegrees) return <div>Error!</div>;
 
-  const cartographicDegrees: CartographicDegrees = {
-    alt: 416530.30446614645,
-    lat: 30.469724008809454,
-    lon: -43.93648239793034,
-  };
   const czml = [
     {
       id: 'document',
@@ -67,7 +61,7 @@ const App: React.FC = () => {
     },
     {
       id: 'shape1',
-      name: 'TOKYO',
+      name: 'ISS',
       position: {
         cartographicDegrees: [
           cartographicDegrees.lon,
@@ -78,17 +72,17 @@ const App: React.FC = () => {
       ellipse: {
         semiMinorAxis: 50000.0,
         semiMajorAxis: 50000.0,
-        height: 20000,
+        height: cartographicDegrees.alt,
         material: {
           solidColor: {
             color: {
-              rgba: [0, 255, 0, 100],
+              rgba: [229, 32, 255, 127],
             },
           },
         },
-        outline: true,
+        outline: true, // height must be set for outlines to display
         outlineColor: {
-          rgba: [255, 0, 0, 0],
+          rgba: [255, 255, 255, 255],
         },
       },
     },
