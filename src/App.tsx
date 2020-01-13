@@ -1,79 +1,71 @@
 import * as React from 'react';
 import { Cartesian3 } from 'cesium';
 import { Viewer, CzmlDataSource, CameraFlyTo } from 'resium';
-import { getCurrentPosition } from './queries/orbitalQuery';
+import { getOrbital, GetOrbitalResponse } from './queries/orbitalQuery';
 
 const { useState, useCallback, useEffect } = React;
-
-type CartographicDegrees = {
-  lon: number;
-  lat: number;
-  alt: number;
-};
 
 type OrbitalState = {
   isLoading: boolean;
   isError: boolean;
-  cartographicDegrees?: CartographicDegrees;
+  response?: GetOrbitalResponse;
 };
 
-const useCurrentPosition = () => {
+const useOrbital = () => {
   const [state, setState] = useState<OrbitalState>({
     isLoading: true,
     isError: false,
-    cartographicDegrees: undefined,
+    response: undefined,
   });
 
-  const fetchCurrentPosition = useCallback(async () => {
-    const res = await getCurrentPosition();
+  const fetchData = useCallback(async () => {
+    const res = await getOrbital();
     if (res.status >= 400) {
       setState(prevState => {
         return { ...prevState, isLoading: false, isError: true };
       });
     }
-    const cartographicDegrees = res.data as CartographicDegrees;
+    const data = res.data as GetOrbitalResponse;
     setState(prevState => {
       return {
         ...prevState,
         isLoading: false,
         isError: false,
-        cartographicDegrees: cartographicDegrees,
+        response: data,
       };
     });
   }, []);
 
   useEffect(() => {
-    fetchCurrentPosition();
-  }, [fetchCurrentPosition]);
+    fetchData();
+  }, [fetchData]);
 
   return { ...state };
 };
 
 const App: React.FC = () => {
-  const { isError, isLoading, cartographicDegrees } = useCurrentPosition();
+  const { isError, isLoading, response } = useOrbital();
   if (isLoading) return <div>Loading....</div>;
-  if (isError || !cartographicDegrees) return <div>Error!</div>;
+  if (isError || !response) return <div>Error!</div>;
 
   const czml = [
     {
       id: 'document',
       name: 'CZML',
       version: '1.0',
+      clock: {
+        currentTime: response.epoch,
+      },
     },
     {
-      id: 'shape1',
+      id: 'Satellite/ISS',
       name: 'ISS',
-      position: {
-        cartographicDegrees: [
-          cartographicDegrees.lon,
-          cartographicDegrees.lat,
-          cartographicDegrees.alt,
-        ],
-      },
+      availability: response.availability,
+      description: '<p>The International Space Station (ISS)</p>',
       ellipse: {
         semiMinorAxis: 50000.0,
         semiMajorAxis: 50000.0,
-        height: cartographicDegrees.alt,
+        height: response.position.alt,
         material: {
           solidColor: {
             color: {
@@ -86,16 +78,34 @@ const App: React.FC = () => {
           rgba: [255, 255, 255, 255],
         },
       },
+      path: {
+        show: [
+          {
+            interval: response.availability,
+            boolean: true,
+          },
+        ],
+        width: 1,
+        material: {
+          solidColor: {
+            color: {
+              rgba: [255, 0, 255, 255],
+            },
+          },
+        },
+        resolution: 120,
+      },
+      position: {
+        epoch: response.epoch,
+        cartographicDegrees: response.cartographicDegrees,
+      },
     },
   ];
+
   return (
     <Viewer full>
       <CameraFlyTo
-        destination={Cartesian3.fromDegrees(
-          cartographicDegrees.lon,
-          cartographicDegrees.lat,
-          10000000,
-        )}
+        destination={Cartesian3.fromDegrees(response.position.lon, response.position.lat, 10000000)}
       />
       <CzmlDataSource data={czml} />
     </Viewer>

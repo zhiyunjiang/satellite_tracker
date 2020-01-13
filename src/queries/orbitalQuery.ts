@@ -1,6 +1,19 @@
 import backendClient from '../utils/backendClient';
 
-export const getCurrentPosition = async () => {
-  const res = await backendClient.get('/api/positions');
+export type CartographicDegrees = {
+  lon: number;
+  lat: number;
+  alt: number;
+};
+
+export type GetOrbitalResponse = {
+  epoch: string;
+  availability: string;
+  position: CartographicDegrees;
+  cartographicDegrees: number[];
+};
+
+export const getOrbital = async () => {
+  const res = await backendClient.get('/api/orbitals');
   return res;
 };
