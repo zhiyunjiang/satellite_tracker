@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Cartesian3 } from 'cesium';
-import { Viewer, CzmlDataSource, CameraFlyTo } from 'resium';
+import { Viewer, CzmlDataSource, CameraFlyTo, Globe } from 'resium';
 import { getOrbital, GetOrbitalResponse } from './queries/orbitalQuery';
 
 const { useState, useCallback, useEffect } = React;
@@ -107,6 +107,7 @@ const App: React.FC = () => {
       <CameraFlyTo
         destination={Cartesian3.fromDegrees(response.position.lon, response.position.lat, 10000000)}
       />
+      <Globe enableLighting />
       <CzmlDataSource data={czml} />
     </Viewer>
   );
