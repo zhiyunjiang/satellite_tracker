@@ -69,7 +69,7 @@ const App: React.FC = () => {
         material: {
           solidColor: {
             color: {
-              rgba: [229, 32, 255, 127],
+              rgba: [9, 175, 237, 255],
             },
           },
         },
@@ -89,7 +89,7 @@ const App: React.FC = () => {
         material: {
           solidColor: {
             color: {
-              rgba: [255, 0, 255, 255],
+              rgba: [9, 175, 237, 255],
             },
           },
         },
