@@ -78,9 +78,21 @@ const SateliteOrbital: React.FC = () => {
       },
       ellipsoid: {
         radii: {
-          cartesian: [50000.0, 50000.0, 50000.0],
+          cartesian: [100000.0, 100000.0, 100000.0],
         },
         fill: true,
+        material: {
+          solidColor: {
+            color: {
+              rgba: [9, 175, 237, 255],
+            },
+          },
+        },
+      },
+      ellipse: {
+        semiMinorAxis: 50000.0,
+        semiMajorAxis: 50000.0,
+        height: response.position.alt,
         material: {
           solidColor: {
             color: {
