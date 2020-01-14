@@ -105,7 +105,7 @@ const SateliteOrbital: React.FC = () => {
   return (
     <>
       <CameraFlyTo
-        destination={Cartesian3.fromDegrees(response.position.lon, response.position.lat, 10000000)}
+        destination={Cartesian3.fromDegrees(response.position.lon, response.position.lat, 20000000)}
       />
       <CzmlDataSource data={czml} />
     </>
