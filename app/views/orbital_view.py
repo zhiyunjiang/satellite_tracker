@@ -6,7 +6,7 @@ from pyorbital.tlefile import Tle
 from app import application
 
 
-@application.route("/api/orbitals", methods=["GET"])
+@application.route("/orbitals", methods=["GET"])
 def get_orbital():
     iss_tle = Tle('ISS (ZARYA)', 'app/tle/iss.tle')
     iss_orbit = Orbital(

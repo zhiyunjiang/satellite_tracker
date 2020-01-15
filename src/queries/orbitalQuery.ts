@@ -14,6 +14,6 @@ export type GetOrbitalResponse = {
 };
 
 export const getOrbital = async () => {
-  const res = await backendClient.get('/api/orbitals');
+  const res = await backendClient.get('orbitals');
   return res;
 };

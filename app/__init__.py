@@ -4,7 +4,8 @@ from flask_cors import CORS
 
 
 application = Flask(__name__)
-cors = CORS(application, resources={r"/api/*": {"origins": "*"}})
+cors = CORS(application, resources={
+            r"/*": {"origins": "http://localhost:3001"}})
 
 env = os.getenv('RUN_MODE', 'development')
 application.config['RUN_MODE'] = env

@@ -1,3 +1,3 @@
-from app.views.api import czml_view
+from app.views import orbital_view
 
-__all__ = ["czml_view"]
+__all__ = ["orbital_view"]
