@@ -249,4 +249,7 @@ dmypy.json
 .runtimeconfig.json
 .firebase
 
+### direnv ###
+.envrc
+
 # End of https://www.gitignore.io/api/node,macos,python
