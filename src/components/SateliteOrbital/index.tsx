@@ -62,7 +62,7 @@ const SateliteOrbital: React.FC = () => {
       name: 'ISS',
       availability: response.availability,
       description:
-        '<p>国際宇宙ステーション(ISS)</p> <p>国際宇宙ステーションは、地球及び宇宙の観測、宇宙環境を利用した様々な研究や実験を行うための巨大な有人施設である。地上から約400km上空の熱圏を秒速約7.7km（時速約27,700km）で地球の赤道に対して51.6度の角度で飛行し、地球を約90分で1周、1日で約16周する。なお、施設内の時刻は、協定世界時に合わせている。</p> <p><a href="https://ja.wikipedia.org/wiki/%E5%9B%BD%E9%9A%9B%E5%AE%87%E5%AE%99%E3%82%B9%E3%83%86%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3" target="_blank" rel="noopener noreferrer">参照</a></p>',
+        '<p>国際宇宙ステーション(ISS)</p> <p>国際宇宙ステーションは、地球及び宇宙の観測、宇宙環境を利用した様々な研究や実験を行うための有人施設。</p> <p><a href="https://ja.wikipedia.org/wiki/%E5%9B%BD%E9%9A%9B%E5%AE%87%E5%AE%99%E3%82%B9%E3%83%86%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3" target="_blank" rel="noopener noreferrer">参照</a></p>',
       label: {
         fillColor: {
           rgba: [255, 255, 255, 255],
