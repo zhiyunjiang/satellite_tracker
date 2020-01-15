@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Cartesian3 } from 'cesium';
 import { CzmlDataSource, CameraFlyTo } from 'resium';
 import { getOrbital, GetOrbitalResponse } from '../../queries/orbitalQuery';
+import * as ellipseImg from '../../assets/img/ellipse.png';
 
 const { useState, useCallback, useEffect } = React;
 
@@ -76,30 +77,12 @@ const SateliteOrbital: React.FC = () => {
         text: 'ISS',
         verticalOrigin: 'CENTER',
       },
-      ellipsoid: {
-        radii: {
-          cartesian: [100000.0, 100000.0, 100000.0],
-        },
-        fill: true,
-        material: {
-          solidColor: {
-            color: {
-              rgba: [9, 175, 237, 255],
-            },
-          },
-        },
-      },
-      ellipse: {
-        semiMinorAxis: 50000.0,
-        semiMajorAxis: 50000.0,
-        height: response.position.alt,
-        material: {
-          solidColor: {
-            color: {
-              rgba: [9, 175, 237, 255],
-            },
-          },
-        },
+      billboard: {
+        horizontalOrigin: 'CENTER',
+        image: ellipseImg.default,
+        scale: 0.5,
+        show: true,
+        verticalOrigin: 'CENTER',
       },
       path: {
         show: [
