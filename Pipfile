@@ -4,13 +4,13 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-flask = "*"
-flask-script = "*"
-uwsgi = "*"
 pyorbital = "*"
-flask-cors = "*"
 
 [dev-packages]
+flask = "*"
+flask-script = "*"
+flask-cors = "*"
+uwsgi = "*"
 flake8 = "*"
 autopep8 = "*"
 
