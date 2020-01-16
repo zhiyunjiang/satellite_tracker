@@ -64,6 +64,11 @@ module.exports = (env, args) => {
     plugins: [
       new webpack.DefinePlugin({
         CESIUM_BASE_URL: JSON.stringify('/'),
+        'process.env': {
+          BACKEND_URL: prod
+            ? JSON.stringify(process.env.CLOUD_FUNCTIONS_BASE_URL)
+            : JSON.stringify('http://localhost:3000'),
+        },
       }),
       new CopyPlugin([
         {
