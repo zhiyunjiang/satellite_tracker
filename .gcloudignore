@@ -1,0 +1,7 @@
+# ignore all
+/[!.]*
+/.?*
+
+# whitelist
+!main.py
+!requirements.txt

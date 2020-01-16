@@ -1,7 +1,7 @@
 # What is?
 This application is the tracker of International Satelite Statation(ISS) on 3D map.
 
-https://satelite-tracker-f293f.firebaseapp.com/
+https://satelite-tracker-f293f.firebaseapp.com
 
 # Requirement
 ```
@@ -33,4 +33,23 @@ $ pipenv run start
 $ npm start
 
 $ open http://localhost:3001
+```
+
+# Deployment
+
+## Deploying the backend function to Google Cloud Functions
+
+* Install `google-cloud-sdk` and `gcloud init`
+
+* Generate `requirements.txt`
+```
+$ pipenv lock -r > requirements.txt
+```
+
+* Deploy
+
+`APPLICATION_URL` is the page url calls google cloud function.
+
+```
+$ gcloud functions deploy orbitals --trigger-http --runtime=python37 --set-env-vars APPLICATION_URL=<application url>
 ```
