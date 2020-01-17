@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --mode development --inprogress",
-    "build:production": "webpack --mode production",
+    "build:production": "node --max_old_space_size=2048 node_modules/webpack/bin/webpack.js --mode production",
     "build": "npm-run-all clean build:production",
     "clean": "rimraf build"
   },
