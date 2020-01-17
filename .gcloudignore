@@ -4,4 +4,4 @@
 
 # whitelist
 !main.py
-!requirements.txt
+!Pipfile.lock

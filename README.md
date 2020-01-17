@@ -41,12 +41,7 @@ $ open http://localhost:3001
 
 * Install `google-cloud-sdk` and `gcloud init`
 
-* Generate `requirements.txt`
-```
-$ pipenv lock -r > requirements.txt
-```
-
-* Deploy
+* Deploying
 
 `APPLICATION_URL` is the page url calls google cloud function.
 
