@@ -43,7 +43,7 @@ $ open http://localhost:3001
 
 * Deploying
 
-`APPLICATION_URL` is the page url calls google cloud function.
+`APPLICATION_URL` is the page url calls google cloud function. This url is used as the cors setting.
 
 ```
 $ gcloud functions deploy orbitals --trigger-http --runtime=python37 --set-env-vars APPLICATION_URL=<application url>
