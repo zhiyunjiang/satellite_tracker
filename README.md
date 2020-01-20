@@ -48,3 +48,28 @@ $ open http://localhost:3001
 ```
 $ gcloud functions deploy orbitals --trigger-http --runtime=python37 --set-env-vars APPLICATION_URL=<application url>
 ```
+
+## Deploying the frontend asset files to Firebase.
+### If you haven't create your Firebase project
+1. Create your new firebase project at [the firebase console](https://firebase.google.com/products/hosting/?hl=ja).
+2. Install `firebase-tools`
+```
+$ npm install -g firebase-tools
+```
+3. Init your firebase project.
+```
+$ firebase login
+$ firebase init
+```
+
+### Deploy
+
+* Build assets
+```
+$ npm run build
+```
+
+* Firebase deploy
+```
+$ firebase deploy
+```
