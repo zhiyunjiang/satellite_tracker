@@ -9,7 +9,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 const cesiumSource = 'node_modules/cesium/Source';
 const cesiumWorkers = '../Build/Cesium/Workers';
 
-module.exports = (env, args) => {
+module.exports = (_, args) => {
   const prod = args.mode === 'production';
   return {
     context: __dirname,
@@ -65,6 +65,7 @@ module.exports = (env, args) => {
       new webpack.DefinePlugin({
         CESIUM_BASE_URL: JSON.stringify('/'),
         'process.env': {
+          GA_TRACKING_CODE: JSON.stringify(process.env.GA_TRACKING_CODE),
           BACKEND_URL: prod
             ? JSON.stringify(process.env.CLOUD_FUNCTIONS_BASE_URL)
             : JSON.stringify('http://localhost:3000'),
