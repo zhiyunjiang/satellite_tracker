@@ -37,6 +37,14 @@ $ open http://localhost:3001
 
 # Deployment
 
+## Set Environmental Variables
+
+|  Name  | Description |
+| ---- | ---- |
+|  CLOUD_FUNCTIONS_BASE_URL  |  Clound Functions base url. This is only used on production. |
+|  GA_TRACKING_CODE  |  Google Analytics code. This is only used on production. |
+
+
 ## Deploying the backend function to Google Cloud Functions
 
 * Install `google-cloud-sdk` and `gcloud init`
