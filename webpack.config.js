@@ -69,6 +69,7 @@ module.exports = (_, args) => {
           BACKEND_URL: prod
             ? JSON.stringify(process.env.CLOUD_FUNCTIONS_BASE_URL)
             : JSON.stringify('http://localhost:3000'),
+          CECIUM_ACCESS_TOKEN: JSON.stringify(process.env.CECIUM_ACCESS_TOKEN),
         },
       }),
       new CopyPlugin([
