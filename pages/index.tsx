@@ -2,8 +2,8 @@ import * as React from 'react';
 import { GetServerSideProps, NextPage } from 'next';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
-import { CartographicDegree, getOrbital } from '../modules/Orbit';
-import { getTleLines } from '../modules/Tle';
+import { CartographicDegree, getOrbital } from 'modules/Orbit';
+import { getTleLines } from 'modules/Tle';
 
 const RootPage = dynamic(() => import('../components/pages/RootPage'), { ssr: false });
 

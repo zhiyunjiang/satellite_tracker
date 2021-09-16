@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Cartesian3 } from 'cesium';
 import { CzmlDataSource, Viewer, CameraFlyTo } from 'resium';
-import { buildOrbitalCzmlData } from '../../../modules/Cesium';
-import { CartographicDegree } from '../../../modules/Orbit';
+import { buildOrbitalCzmlData } from 'modules/Cesium';
+import { CartographicDegree } from 'modules/Orbit';
 
 type Props = {
   startTime: Date;

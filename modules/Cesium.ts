@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 import { CartographicDegree } from "./Orbit";
-import ellipse from '../assets/img/ellipse.png'
+import ellipse from 'assets/img/ellipse.png'
 
 export const buildOrbitalCzmlData = (startTime: Date, orbital: CartographicDegree[]) => {
   const start = dayjs(startTime);
