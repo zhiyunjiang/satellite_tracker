@@ -1,7 +1,0 @@
-# ignore all
-/[!.]*
-/.?*
-
-# whitelist
-!main.py
-!Pipfile.lock
