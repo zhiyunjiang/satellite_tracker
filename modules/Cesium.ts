@@ -46,7 +46,7 @@ export const buildOrbitalCzmlData = (startTime: Date, orbital: CartographicDegre
       billboard: {
         horizontalOrigin: 'CENTER',
         image: ellipse.blurDataURL,
-        scale: 0.5,
+        scale: 1,
         show: true,
         verticalOrigin: 'CENTER',
       },
