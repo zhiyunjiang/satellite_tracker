@@ -20,7 +20,7 @@ export const getOrbital = async (tleLines: TleLines, time: Date) => {
   const cartographicDegrees: CartographicDegree[] = [];
 
   let i = 0;
-  while (i < 90) {
+  while (i < 100) {
     const time = start.add(i, 'minutes');
     const { position: positionEci } = satellite.propagate(
       satrec,
