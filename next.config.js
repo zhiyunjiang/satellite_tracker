@@ -1,8 +1,11 @@
 const webpack = require('webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
+const isProduction = process.env.NODE_ENV === 'production';
 
 module.exports = {
   reactStrictMode: true,
-  webpack: config => {
+  webpack: (config) => {
     config.plugins.push(
       new webpack.DefinePlugin({
         CESIUM_BASE_URL: JSON.stringify('cesium'),
@@ -11,7 +14,17 @@ module.exports = {
           CECIUM_ACCESS_TOKEN: JSON.stringify(process.env.CECIUM_ACCESS_TOKEN),
         },
       }),
+      isProduction
+        ? new CopyWebpackPlugin({
+            patterns: [
+              {
+                from: 'node_modules/cesium/Build/Cesium',
+                to: '../public/cesium',
+              },
+            ],
+          })
+        : {}
     );
     return config;
   }
-}
+};
