@@ -17,6 +17,9 @@ If you know details of this app, please read the following post,
 # Build
 $ npm install
 
+# Make Symbolic link
+$ npx symlink-dir node_modules/cesium/Build/Cesium public/cesium
+
 # Start
 $ npm run dev
 
