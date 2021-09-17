@@ -6,6 +6,13 @@ type TleLines = {
   line2: string;
 }
 
+/**
+ * SatelliteLocation
+ * offsetTime: Offset time from start time [second].
+ * longitude: longitude [degree].
+ * latitude: latitude [degree].
+ * altitude: altitude [meter].
+ */
 export type SatelliteLocation = {
   offsetTime: number;
   longitude: number;
