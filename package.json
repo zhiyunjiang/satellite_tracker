@@ -5,8 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "postinstall": "symlink-dir node_modules/cesium/Build/Cesium public/cesium"
+    "start": "next start"
   },
   "keywords": [],
   "author": "Ushinji",
