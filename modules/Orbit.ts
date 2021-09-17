@@ -19,10 +19,9 @@ export const getOrbital = async (tleLines: TleLines, time: Date) => {
   const start = dayjs(time);
   const cartographicDegrees: CartographicDegree[] = [];
 
-  // 5400s = 1.5h
   let i = 0;
-  while (i < 5400) {
-    const time = start.add(i, 'seconds');
+  while (i < 90) {
+    const time = start.add(i, 'minutes');
     const { position: positionEci } = satellite.propagate(
       satrec,
       time.toDate()
