@@ -2,11 +2,11 @@ import * as React from 'react';
 import { Cartesian3 } from 'cesium';
 import { CzmlDataSource, Viewer, CameraFlyTo, Clock } from 'resium';
 import { buildOrbitalCzmlData } from 'modules/Cesium';
-import { CartographicDegree } from 'modules/Orbit';
+import { SatelliteLocation } from 'modules/Orbit';
 
 type Props = {
   startTime: Date;
-  orbital: CartographicDegree[];
+  orbital: SatelliteLocation[];
 };
 
 const RootPage: React.VFC<Props> = ({ startTime, orbital }) => {

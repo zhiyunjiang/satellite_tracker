@@ -6,8 +6,8 @@ type TleLines = {
   line2: string;
 }
 
-export type CartographicDegree = {
-  offset: number;
+export type SatelliteLocation = {
+  offsetTime: number;
   longitude: number;
   latitude: number;
   altitude: number;
@@ -17,7 +17,7 @@ export const getOrbital = async (tleLines: TleLines, time: Date) => {
   const satrec = satellite.twoline2satrec(tleLines.line1, tleLines.line2);
 
   const start = dayjs(time);
-  const cartographicDegrees: CartographicDegree[] = [];
+  const result: SatelliteLocation[] = [];
 
   for(let i = 0; i < 100; i++) {
     const time = start.add(i, 'minutes');
@@ -35,13 +35,13 @@ export const getOrbital = async (tleLines: TleLines, time: Date) => {
       satellite.gstime(time.toDate())
     );
 
-    cartographicDegrees.push({
-      offset: i * 60,
+    result.push({
+      offsetTime: i * 60,
       longitude: satellite.degreesLong(positionGd.longitude),
       latitude: satellite.degreesLat(positionGd.latitude),
       altitude: positionGd.height * 1000,
     });
   }
 
-  return cartographicDegrees;
+  return result;
 };

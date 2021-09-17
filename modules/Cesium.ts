@@ -1,17 +1,17 @@
 import dayjs from 'dayjs';
-import { CartographicDegree } from "./Orbit";
+import { SatelliteLocation } from "./Orbit";
 import ellipse from 'assets/img/ellipse.png'
 
-export const buildOrbitalCzmlData = (startTime: Date, orbital: CartographicDegree[]) => {
+export const buildOrbitalCzmlData = (startTime: Date, orbital: SatelliteLocation[]) => {
   const start = dayjs(startTime);
   const currentTime = start.toISOString();
 
-  const { offset: endOffset } = orbital[orbital.length - 1];
-  const end = dayjs(startTime).add(endOffset, 'seconds');
+  const { offsetTime: endOffsetTime } = orbital[orbital.length - 1];
+  const end = dayjs(startTime).add(endOffsetTime, 'seconds');
   const availability = `${currentTime}/${end.toISOString()}`;
 
   const cartographicDegrees = orbital.reduce<number[]>((acc, item)=> {
-    acc.push(item.offset);
+    acc.push(item.offsetTime);
     acc.push(item.longitude);
     acc.push(item.latitude);
     acc.push(item.altitude);
