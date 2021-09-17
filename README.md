@@ -1,5 +1,5 @@
 # What is?
-This application is the tracker of International Satelite Statation(ISS) on 3D/2D geological map.
+`Satellite Tracker` is a web application visualizes a orbit of International Satellite Station on 3D/2D geological map.
 
 https://satellite-tracker.vercel.app/
 
@@ -12,6 +12,12 @@ If you know details of this app, please read the following post,
 # Requirement
 
 * node.js: >= 16
+
+# Used Libraries
+
+* [Cesium](https://github.com/CesiumGS/cesium)
+* [Resium](https://github.com/reearth/resium)
+* [satellite.js](https://github.com/shashwatak/satellite-js)
 
 # Get starting
 
