@@ -5,6 +5,9 @@ const isProduction = process.env.NODE_ENV === 'production';
 
 module.exports = {
   reactStrictMode: true,
+  eslint: {
+    dirs: ['pages', 'components', 'modules'],
+  },
   webpack: (config) => {
     config.plugins.push(
       new webpack.DefinePlugin({
