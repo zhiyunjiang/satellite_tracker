@@ -4,7 +4,7 @@ import dayjs from 'dayjs';
 type TleLines = {
   line1: string;
   line2: string;
-}
+};
 
 /**
  * SatelliteLocation
@@ -26,7 +26,7 @@ export const getOrbital = async (tleLines: TleLines, time: Date) => {
   const start = dayjs(time);
   const result: SatelliteLocation[] = [];
 
-  for(let i = 0; i < 100; i++) {
+  for (let i = 0; i < 100; i++) {
     const time = start.add(i, 'minutes');
     const { position: positionEci } = satellite.propagate(
       satrec,
