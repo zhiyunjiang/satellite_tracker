@@ -2,8 +2,8 @@ import * as React from 'react';
 import { GetServerSideProps, NextPage } from 'next';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
-import { SatelliteLocation, getOrbital } from 'src/modules/Orbit';
-import { getTleLines } from 'src/modules/Tle';
+import { SatelliteLocation, getOrbital } from '@/modules/Orbit';
+import { getTleLines } from '@/modules/Tle';
 
 const RootPage = dynamic(() => import('../components/pages/RootPage'), {
   ssr: false,
