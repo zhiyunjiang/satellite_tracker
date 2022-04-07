@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
-import { SatelliteLocation } from './Orbit';
 import ellipse from 'assets/img/ellipse.png';
+import { SatelliteLocation } from './Orbit';
 
 export const buildOrbitalCzmlData = (
   startTime: Date,

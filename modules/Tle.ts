@@ -11,11 +11,7 @@ export const getTleLines = async (satelliteName: string) => {
   const lines = data.split(/\r\n|\n/);
 
   let idx = 0;
-  while (true) {
-    if (idx + 2 >= lines.length) {
-      break;
-    }
-
+  while (idx + 2 < lines.length) {
     const line1 = lines[idx].trim();
     if (line1.toUpperCase() === satelliteName.toUpperCase()) {
       return {
