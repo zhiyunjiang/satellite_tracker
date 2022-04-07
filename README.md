@@ -11,7 +11,7 @@ If you know details of this app, please read the following post,
 
 # Requirement
 
-* node.js: >= 16
+* node.js: ver 14
 
 # Used Libraries
 
