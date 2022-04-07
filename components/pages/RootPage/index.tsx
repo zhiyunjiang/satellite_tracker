@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { VFC, useMemo } from 'react';
 import { Cartesian3 } from 'cesium';
 import { CzmlDataSource, Viewer, CameraFlyTo, Clock } from 'resium';
 import { buildOrbitalCzmlData } from 'modules/Cesium';
@@ -9,8 +9,8 @@ type Props = {
   orbital: SatelliteLocation[];
 };
 
-const RootPage: React.VFC<Props> = ({ startTime, orbital }) => {
-  const czmlData = React.useMemo(() => {
+const RootPage: VFC<Props> = ({ startTime, orbital }) => {
+  const czmlData = useMemo(() => {
     return buildOrbitalCzmlData(startTime, orbital);
   }, [startTime, orbital]);
 
