@@ -12,7 +12,7 @@ type Props = {
 const RootPage: React.VFC<Props> = ({ startTime, orbital }) => {
   const czmlData = React.useMemo(() => {
     return buildOrbitalCzmlData(startTime, orbital);
-  }, []);
+  }, [startTime, orbital]);
 
   return (
     <Viewer full>

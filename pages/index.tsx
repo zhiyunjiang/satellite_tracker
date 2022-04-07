@@ -16,6 +16,7 @@ const Root: NextPage<Props> = ({ startTime, orbital }) => {
   return (
     <>
       <Head>
+        {/* eslint-disable-next-line @next/next/no-css-tags */}
         <link rel="stylesheet" href="cesium/Widgets/widgets.css" />
       </Head>
       <RootPage startTime={new Date(startTime)} orbital={orbital} />
