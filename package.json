@@ -11,7 +11,7 @@
     "start": "next start",
     "prebuild": "rimraf public/cesium",
     "lint": "next lint",
-    "format": "prettier --write \"components/**/*\" \"modules/**/*\" \"pages/**/*\"",
+    "format": "prettier --write \"src/**/*\"",
     "prepare": "husky install",
     "lint-staged": "lint-staged"
   },
