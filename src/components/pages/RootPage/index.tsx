@@ -1,8 +1,8 @@
 import { VFC, useMemo } from 'react';
 import { Cartesian3 } from 'cesium';
 import { CzmlDataSource, Viewer, CameraFlyTo, Clock } from 'resium';
-import { buildOrbitalCzmlData } from 'modules/Cesium';
-import { SatelliteLocation } from 'modules/Orbit';
+import { buildOrbitalCzmlData } from 'src/modules/Cesium';
+import { SatelliteLocation } from 'src/modules/Orbit';
 
 type Props = {
   startTime: Date;
