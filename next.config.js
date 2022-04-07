@@ -13,18 +13,22 @@ module.exports = {
           GA_TRACKING_CODE: JSON.stringify(process.env.GA_TRACKING_CODE),
           CECIUM_ACCESS_TOKEN: JSON.stringify(process.env.CECIUM_ACCESS_TOKEN),
         },
-      }),
-      isProduction
-        ? new CopyWebpackPlugin({
-            patterns: [
-              {
-                from: 'node_modules/cesium/Build/Cesium',
-                to: '../public/cesium',
-              },
-            ],
-          })
-        : {}
+      })
     );
+
+    if (isProduction) {
+      config.plugins.push(
+        new CopyWebpackPlugin({
+          patterns: [
+            {
+              from: 'node_modules/cesium/Build/Cesium',
+              to: '../public/cesium',
+            },
+          ],
+        })
+      );
+    }
+
     return config;
-  }
+  },
 };
