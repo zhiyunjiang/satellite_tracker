@@ -2,17 +2,24 @@
   "name": "satelite_tracker",
   "version": "2.0.0",
   "private": true,
+  "keywords": [],
+  "author": "Ushinji",
+  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "cross-env NODE_ENV=production next build",
     "start": "next start",
     "prebuild": "rimraf public/cesium",
     "lint": "next lint",
-    "format": "prettier --write \"components/**/*\" \"modules/**/*\" \"pages/**/*\""
+    "format": "prettier --write \"components/**/*\" \"modules/**/*\" \"pages/**/*\"",
+    "prepare": "husky install",
+    "lint-staged": "lint-staged"
   },
-  "keywords": [],
-  "author": "Ushinji",
-  "license": "MIT",
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix"
+    ]
+  },
   "dependencies": {
     "axios": "^0.21.4",
     "cesium": "^1.85.0",
@@ -30,6 +37,8 @@
     "eslint": "^7.32.0",
     "eslint-config-next": "^12.1.4",
     "eslint-config-prettier": "^8.5.0",
+    "husky": "^7.0.0",
+    "lint-staged": "^12.3.7",
     "prettier": "^2.6.2",
     "rimraf": "^3.0.2",
     "symlink-dir": "^5.0.1",
