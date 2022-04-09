@@ -3,6 +3,7 @@ import { Cartesian3 } from 'cesium';
 import { CzmlDataSource, Viewer, CameraFlyTo, Clock } from 'resium';
 import { buildOrbitalCzmlData } from '@/modules/Cesium';
 import { SatelliteLocation } from '@/modules/Orbit';
+import LocationPanel from '@/components/organisms/LocationPanel';
 
 type Props = {
   startTime: Date;
@@ -16,6 +17,7 @@ const RootPage: VFC<Props> = ({ startTime, orbital }) => {
 
   return (
     <Viewer full>
+      <LocationPanel />
       <CameraFlyTo
         destination={Cartesian3.fromDegrees(
           orbital[0].longitude,
