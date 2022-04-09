@@ -4,9 +4,6 @@ export const getTleLines = async (satelliteName: string) => {
   const res = await axios.get<string>(
     'https://celestrak.com/NORAD/elements/active.txt'
   );
-  if (res.status >= 400) {
-    throw new Error('TLE is not found.');
-  }
   const data = res.data;
   const lines = data.split(/\r\n|\n/);
 
