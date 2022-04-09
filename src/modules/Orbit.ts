@@ -52,3 +52,24 @@ export const getOrbital = async (tleLines: TleLines, time: Date) => {
 
   return result;
 };
+
+export const getLocation = async (tleLines: TleLines, time: Date) => {
+  const satrec = satellite.twoline2satrec(tleLines.line1, tleLines.line2);
+  const { position: positionEci } = satellite.propagate(satrec, time);
+
+  if (typeof positionEci === 'boolean') {
+    return undefined;
+  }
+
+  const { longitude, latitude, height } = satellite.eciToGeodetic(
+    positionEci,
+    satellite.gstime(time)
+  );
+
+  return {
+    time,
+    longitude: satellite.degreesLong(longitude),
+    latitude: satellite.degreesLat(latitude),
+    height: height * 1000,
+  };
+};
