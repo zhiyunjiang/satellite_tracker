@@ -3,7 +3,7 @@ import { GetServerSideProps, NextPage } from 'next';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
 import { SatelliteLocation, getOrbital } from '@/modules/Orbit';
-import { getTleLines } from '@/modules/Tle';
+import TleRepository from '@/models/Tle/repository';
 
 const RootPage = dynamic(() => import('../components/pages/RootPage'), {
   ssr: false,
@@ -27,9 +27,10 @@ const Root: NextPage<Props> = ({ startTime, orbital }) => {
 };
 
 export const getServerSideProps: GetServerSideProps<Props> = async () => {
-  const tleLines = await getTleLines('ISS (ZARYA)');
+  const tle = await TleRepository().find('ISS (ZARYA)');
+
   const startTime = new Date();
-  const orbital = await getOrbital(tleLines, startTime);
+  const orbital = await getOrbital(tle, startTime);
 
   return { props: { startTime: startTime.getTime(), orbital } };
 };
