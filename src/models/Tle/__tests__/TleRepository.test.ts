@@ -1,6 +1,6 @@
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
-import { getTleLines } from '../Tle';
+import TleRepository from '../repository';
 
 const createRestHandler = (statusCode = 200, resBody = {}) => {
   return rest.get(
@@ -11,8 +11,8 @@ const createRestHandler = (statusCode = 200, resBody = {}) => {
   );
 };
 
-describe('Tle', () => {
-  describe('getTleLines', () => {
+describe('TleRepository', () => {
+  describe('find', () => {
     // Setup API mock server
     const server = setupServer();
     beforeAll(() => server.listen());
@@ -38,7 +38,7 @@ RSP-01
       });
 
       it('return target TLE', async () => {
-        const res = await getTleLines('ISS (ZARYA)');
+        const res = await TleRepository().find('ISS (ZARYA)');
 
         expect(res.line1).toEqual(
           '1 25544U 98067A   22099.02355679  .00009809  00000+0  17994-3 0  9997'
@@ -61,7 +61,7 @@ RSP-01
       });
 
       it('raise Exception', async () => {
-        const res = getTleLines('ISS (ZARYA)');
+        const res = TleRepository().find('ISS (ZARYA)');
         await expect(res).rejects.toThrow('TLE is not found.');
       });
     });
@@ -72,7 +72,7 @@ RSP-01
       });
 
       it('raise Exception', async () => {
-        const res = getTleLines('ISS (ZARYA)');
+        const res = TleRepository().find('ISS (ZARYA)');
         await expect(res).rejects.toThrow(
           'Request failed with status code 500'
         );
