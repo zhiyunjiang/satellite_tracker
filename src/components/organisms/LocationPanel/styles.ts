@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const SContainer = styled.div`
   position: absolute;
-  top: 24px;
+  top: 50px;
   left: 24px;
   width: 200px;
   background: rgba(38, 38, 38, 0.95);
