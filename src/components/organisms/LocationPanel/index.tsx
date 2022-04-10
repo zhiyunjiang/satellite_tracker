@@ -3,6 +3,7 @@ import { Tle } from '@/models/Tle/types';
 import {
   SContainer,
   SHeader,
+  SIcon,
   SHeaderText,
   SBody,
   SItem,
@@ -21,6 +22,7 @@ const LocationPanel: VFC<Props> = ({ tle }) => {
   return (
     <SContainer>
       <SHeader>
+        <SIcon iconName="location-crosshairs" />
         <SHeaderText>Location</SHeaderText>
       </SHeader>
       <SBody>

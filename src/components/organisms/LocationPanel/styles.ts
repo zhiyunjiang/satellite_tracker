@@ -1,9 +1,10 @@
 import styled from 'styled-components';
+import Icon from '@/components/atoms/Icon';
 
 export const SContainer = styled.div`
   position: absolute;
-  top: 50px;
-  left: 24px;
+  bottom: 100px;
+  right: 12px;
   width: 200px;
   background: rgba(38, 38, 38, 0.95);
   border: 1px solid #444444;
@@ -18,6 +19,12 @@ export const SHeader = styled.div`
   background: #545454;
   border-radius: 8px 8px 0px 0px;
   padding: 5px 12px;
+`;
+
+export const SIcon = styled(Icon)`
+  font-size: 16px;
+  color: #ffffff;
+  margin-right: 8px;
 `;
 
 export const SHeaderText = styled.div`
